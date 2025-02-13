@@ -103,6 +103,7 @@
         <air.test.thread-count>2</air.test.thread-count>
         <air.test.jvmsize>4g</air.test.jvmsize>
         <grpc.version>1.68.0</grpc.version>
+        <dep.log4j.version>2.24.3</dep.log4j.version>
 
         <air.javadoc.lint>-missing</air.javadoc.lint>
     </properties>
@@ -231,6 +232,20 @@
                 <version>${dep.netty.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${dep.log4j.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${dep.log4j.version}</version>
+                <scope>runtime</scope>
             </dependency>
 
             <dependency>
@@ -2681,57 +2696,6 @@
                             <Implementation-Version>${project.version}-${git.commit.id.abbrev}</Implementation-Version>
                         </manifestEntries>
                     </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>de.qaware.maven</groupId>
-                <artifactId>go-offline-maven-plugin</artifactId>
-                <version>1.2.8</version>
-                <configuration>
-                    <dynamicDependencies>
-                        <DynamicDependency>
-                            <groupId>org.apache.maven.surefire</groupId>
-                            <artifactId>surefire-testng</artifactId>
-                            <version>3.0.0-M7</version>
-                            <repositoryType>PLUGIN</repositoryType>
-                        </DynamicDependency>
-                        <DynamicDependency>
-                            <groupId>org.apache.maven.surefire</groupId>
-                            <artifactId>surefire-junit4</artifactId>
-                            <version>3.0.0-M7</version>
-                            <repositoryType>PLUGIN</repositoryType>
-                        </DynamicDependency>
-                        <DynamicDependency>
-                            <groupId>com.google.protobuf</groupId>
-                            <artifactId>protoc</artifactId>
-                            <version>3.0.0</version>
-                            <classifier>${os.detected.classifier}</classifier>
-                            <type>exe</type>
-                            <repositoryType>PLUGIN</repositoryType>
-                        </DynamicDependency>
-                        <DynamicDependency>
-                            <groupId>io.grpc</groupId>
-                            <artifactId>protoc-gen-grpc-java</artifactId>
-                            <version>1.0.0</version>
-                            <classifier>${os.detected.classifier}</classifier>
-                            <type>exe</type>
-                            <repositoryType>PLUGIN</repositoryType>
-                        </DynamicDependency>
-                        <DynamicDependency>
-                            <groupId>com.querydsl</groupId>
-                            <artifactId>querydsl-apt</artifactId>
-                            <version>4.2.1</version>
-                            <classifier>jpa</classifier>
-                            <repositoryType>MAIN</repositoryType>
-                        </DynamicDependency>
-                        <DynamicDependency>
-                            <groupId>org.flywaydb</groupId>
-                            <artifactId>flyway-commandline</artifactId>
-                            <version>4.0.3</version>
-                            <type>zip</type>
-                            <repositoryType>MAIN</repositoryType>
-                        </DynamicDependency>
-                    </dynamicDependencies>
                 </configuration>
             </plugin>
             <plugin>
